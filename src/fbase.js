@@ -1,4 +1,5 @@
-import * as firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   //.env를 만들어 키를 관리하면 gitignore를 통해 키를 보여주지 않음으로써 보안성 향상
@@ -11,4 +12,6 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-export default firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
+
+export const authService = getAuth(firebaseApp);
